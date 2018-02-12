@@ -174,7 +174,7 @@ var main = function() {
   then = now;
   if (gameover) {
     alert("Gameover. You made it to level: " + level);
-    document.location.reload();
+    document.location.reload(true);
   }
   requestAnimationFrame(main);
 };
