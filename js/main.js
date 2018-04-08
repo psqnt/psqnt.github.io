@@ -160,9 +160,11 @@ var checkForCollisions = function() {
 };
 
 var update = function(modifier) {
-  player.move(modifier);
-  moveEnemies(modifier);
-  checkForCollisions();
+  if (!gameover) {
+    player.move(modifier);
+    moveEnemies(modifier);
+    checkForCollisions();
+  }
 };
 
 var main = function() {
