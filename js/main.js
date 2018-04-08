@@ -175,6 +175,7 @@ var main = function() {
 
   then = now;
   if (gameover) {
+    enemies = [];
     alert("Gameover. You made it to level: " + level);
     document.location.reload(true);
   }
