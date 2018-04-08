@@ -178,8 +178,9 @@ var main = function() {
     enemies = [];
     alert("Gameover. You made it to level: " + level);
     document.location.reload(true);
+  } else {
+    requestAnimationFrame(main);
   }
-  requestAnimationFrame(main);
 };
 
 createSpawns();
