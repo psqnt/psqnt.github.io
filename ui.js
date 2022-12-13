@@ -3,6 +3,7 @@ const mainMenuModal = document.querySelector("#menu-modal");
 const gameOverMenu = document.querySelector("#game-over-modal");
 const levelSelectModel = document.querySelector("#level-select-modal");
 const optionsModal = document.querySelector("#options-modal");
+const howModal = document.querySelector("#how-modal");
 const creditsModal = document.querySelector("#credits-modal");
 
 // Buttons
@@ -14,6 +15,8 @@ const levelSelectMenuButton = document.querySelector(
 );
 const optionsButton = document.querySelector("#options-button");
 const optionsMenuButton = document.querySelector("#options-menu-button");
+const howButton = document.querySelector("#how-button");
+const howMenuButton = document.querySelector("#how-menu-button");
 const creditsButton = document.querySelector("#credits-button");
 const creditsMenuButton = document.querySelector("#credits-menu-button");
 const gameOverMenuButton = document.querySelector("#game-over-menu-button");
@@ -36,6 +39,10 @@ const scoreElement = document.querySelector("#score");
 class UI {
   constructor() {
     this.location = "main";
+  }
+
+  hideHowMenu() {
+    howModal.style.display = "none";
   }
 
   hideCreditsMenu() {
@@ -77,6 +84,10 @@ class UI {
 
   showCreditsMenu() {
     creditsModal.style.display = "flex";
+  }
+
+  showHowMenu() {
+    howModal.style.display = "flex";
   }
 
   updateGameScoreUI(score) {

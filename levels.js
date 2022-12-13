@@ -159,8 +159,8 @@ const levels = {
     },
     enemies: [
       {
-        x: 150,
-        y: 50,
+        x: 100,
+        y: 500,
         radius: 10,
         color: "red",
         velocity: {
@@ -168,13 +168,13 @@ const levels = {
           y: 3,
         },
         coordinates: [
-          { x: 150, y: 50 },
-          { x: 150, y: 500 },
+          { x: 100, y: 50 },
+          { x: 100, y: 500 },
         ],
       },
       {
         x: 450,
-        y: 100,
+        y: 50,
         radius: 10,
         color: "red",
         velocity: {
@@ -187,7 +187,7 @@ const levels = {
         ],
       },
       {
-        x: 50,
+        x: 250,
         y: 100,
         radius: 10,
         color: "red",
@@ -196,8 +196,8 @@ const levels = {
           y: 3,
         },
         coordinates: [
-          { x: 50, y: 50 },
-          { x: 50, y: 500 },
+          { x: 250, y: 50 },
+          { x: 250, y: 500 },
         ],
       },
     ],

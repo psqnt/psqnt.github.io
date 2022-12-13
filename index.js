@@ -428,6 +428,16 @@ creditsMenuButton.addEventListener("click", () => {
   ui.showMainMenu();
 });
 
+howButton.addEventListener("click", () => {
+  ui.hideMainMenu();
+  ui.showHowMenu();
+});
+
+howMenuButton.addEventListener("click", () => {
+  ui.hideHowMenu();
+  ui.showMainMenu();
+});
+
 survivalButton.addEventListener("click", () => {
   level = "survival";
   startGame();
