@@ -15,6 +15,7 @@ const levelSelectMenuButton = document.querySelector(
 );
 const optionsButton = document.querySelector("#options-button");
 const optionsMenuButton = document.querySelector("#options-menu-button");
+const optionsMusicButton = document.querySelector("#options-music-button");
 const howButton = document.querySelector("#how-button");
 const howMenuButton = document.querySelector("#how-menu-button");
 const creditsButton = document.querySelector("#credits-button");
@@ -34,11 +35,14 @@ const level9Button = document.querySelector("#level-9-button");
 
 // Display Info
 const gameOverScore = document.querySelector("#game-over-score");
+const levelDisplay = document.querySelector("#levelNumber");
+const lifeDisplay = document.querySelector("#lives");
 const scoreElement = document.querySelector("#score");
+let musicText = document.querySelector("#music-text");
 
 class UI {
   constructor() {
-    this.location = "main";
+    this.optionsMusic = true;
   }
 
   hideHowMenu() {
@@ -73,6 +77,11 @@ class UI {
     optionsModal.style.display = "flex";
   }
 
+  showGameCompleted(player) {
+    gameOverMenu.style.display = "flex";
+    gameOverScore.innerHTML = `You Win! Lives used: ${player.lives}`;
+  }
+
   showGameOver(score) {
     gameOverMenu.style.display = "flex";
     gameOverScore.innerHTML = score;
@@ -92,5 +101,22 @@ class UI {
 
   updateGameScoreUI(score) {
     scoreElement.innerHTML = score;
+  }
+
+  updateLevelNumber(level) {
+    levelDisplay.innerHTML = level;
+  }
+
+  updateLifeCount(lives) {
+    lifeDisplay.innerHTML = lives;
+  }
+
+  toggleMusic() {
+    this.optionsMusic = !this.optionsMusic;
+    if (this.optionsMusic) {
+      musicText.innerHTML = "Music On";
+    } else {
+      musicText.innerHTML = "Music Off";
+    }
   }
 }

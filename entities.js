@@ -40,6 +40,7 @@ class RoundMovingEntity extends RoundEntity {
 class Player extends RoundEntity {
   constructor(x, y, radius, color, game) {
     super(x, y, radius, color);
+    this.spawnLocation = { x: x, y: y };
     this.baseSpeed = 256;
     this.baseColor = "white";
     this.speed = this.baseSpeed;
@@ -56,8 +57,15 @@ class Player extends RoundEntity {
     this.game = game;
     this.alive = true;
     this.powerUp = false;
+    this.lives = 0;
   }
 
+  reset() {
+    this.x = this.spawnLocation.x;
+    this.y = this.spawnLocation.y;
+    this.velocity.x = 0;
+    this.velocity.y = 0;
+  }
   draw() {
     if (this.alive) {
       ctx.beginPath();
@@ -427,6 +435,10 @@ class Player extends RoundEntity {
     this.x = null;
     this.y = null;
   }
+
+  incrementLives() {
+    this.lives++;
+  }
 }
 
 class Item extends RoundEntity {
@@ -446,13 +458,17 @@ class PathedMovingEnemy extends RoundMovingEntity {
   constructor(x, y, radius, color, velocity, coordinates) {
     super(x, y, radius, color, velocity);
     this.coordinates = coordinates;
-    this.targetCoordinates = this.coordinates[0];
     this.coordinatesIndex = 1;
+    if (this.coordinates.length > 0) {
+      this.targetCoordinates = this.coordinates[0];
+    }
   }
 
   update() {
     this.draw();
-    this.goTo(this.targetCoordinates);
+    if (this.coordinates.length > 0) {
+      this.goTo(this.targetCoordinates);
+    }
   }
 
   goTo(coordinates) {

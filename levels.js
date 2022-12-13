@@ -65,7 +65,14 @@ const levels = {
         ],
       },
     ],
-    items: [{ x: 250, y: 450, radius: 7, color: "yellow" }],
+    items: [
+      {
+        x: 250,
+        y: 450,
+        radius: 7,
+        color: `hsl(60, 100%, 50%)`,
+      },
+    ],
     boundaries: [
       { x: 0, y: 0, width: 500, height: 5 },
       { x: 0, y: 500, width: 500, height: 5 },
@@ -138,7 +145,14 @@ const levels = {
         ],
       },
     ],
-    items: [{ x: 20, y: 450, radius: 7, color: "yellow" }],
+    items: [
+      {
+        x: 20,
+        y: 450,
+        radius: 7,
+        color: `hsl(60, 100%, 50%)`,
+      },
+    ],
     boundaries: [
       { x: 0, y: 0, width: 500, height: WALL_DEPTH },
       { x: 0, y: 0, width: WALL_DEPTH, height: 500 },
@@ -201,7 +215,14 @@ const levels = {
         ],
       },
     ],
-    items: [{ x: 20, y: 450, radius: 7, color: "yellow" }],
+    items: [
+      {
+        x: 450,
+        y: 450,
+        radius: 7,
+        color: `hsl(60, 100%, 50%)`,
+      },
+    ],
     boundaries: [
       { x: 0, y: 0, width: 500, height: WALL_DEPTH },
       { x: 500, y: 0, width: WALL_DEPTH, height: 505 },
@@ -292,24 +313,31 @@ const levels = {
         ],
       },
     ],
-    items: [{ x: 650, y: 500, radius: 7, color: "yellow" }],
+    items: [
+      {
+        x: 650,
+        y: 500,
+        radius: 7,
+        color: `hsl(60, 100%, 50%)`,
+      },
+    ],
     boundaries: [
       { x: 0, y: 0, width: 700, height: WALL_DEPTH },
       { x: 0, y: 600, width: 705, height: WALL_DEPTH },
       { x: 700, y: 0, width: WALL_DEPTH, height: 600 },
       { x: 0, y: 0, width: WALL_DEPTH, height: 600 },
-      { x: 100, y: 0, width: WALL_DEPTH, height: 450 },
+      { x: 100, y: 0, width: WALL_DEPTH, height: 425 },
       { x: 100, y: 500, width: WALL_DEPTH, height: 100 },
       { x: 200, y: 0, width: WALL_DEPTH, height: 100 },
-      { x: 200, y: 150, width: WALL_DEPTH, height: 450 },
-      { x: 300, y: 0, width: WALL_DEPTH, height: 450 },
+      { x: 200, y: 175, width: WALL_DEPTH, height: 425 },
+      { x: 300, y: 0, width: WALL_DEPTH, height: 425 },
       { x: 300, y: 500, width: WALL_DEPTH, height: 100 },
       { x: 400, y: 0, width: WALL_DEPTH, height: 100 },
-      { x: 400, y: 150, width: WALL_DEPTH, height: 450 },
-      { x: 500, y: 0, width: WALL_DEPTH, height: 450 },
+      { x: 400, y: 175, width: WALL_DEPTH, height: 425 },
+      { x: 500, y: 0, width: WALL_DEPTH, height: 425 },
       { x: 500, y: 500, width: WALL_DEPTH, height: 100 },
       { x: 600, y: 0, width: WALL_DEPTH, height: 100 },
-      { x: 600, y: 150, width: WALL_DEPTH, height: 450 },
+      { x: 600, y: 175, width: WALL_DEPTH, height: 425 },
     ],
   },
   5: {
@@ -479,7 +507,14 @@ const levels = {
         ],
       },
     ],
-    items: [{ x: 650, y: 100, radius: 7, color: "yellow" }],
+    items: [
+      {
+        x: 650,
+        y: 100,
+        radius: 7,
+        color: `hsl(60, 100%, 50%)`,
+      },
+    ],
     boundaries: [
       { x: 0, y: 0, width: 700, height: WALL_DEPTH },
       { x: 0, y: 200, width: 705, height: WALL_DEPTH },
@@ -878,8 +913,37 @@ const levels = {
           { x: 150, y: 320 },
         ],
       },
+      {
+        x: 350,
+        y: 375,
+        radius: 10,
+        color: "red",
+        velocity: {
+          x: 1,
+          y: 1,
+        },
+        coordinates: [],
+      },
+      {
+        x: 400,
+        y: 325,
+        radius: 10,
+        color: "red",
+        velocity: {
+          x: 1,
+          y: 1,
+        },
+        coordinates: [],
+      },
     ],
-    items: [{ x: 450, y: 350, radius: 7, color: "yellow" }],
+    items: [
+      {
+        x: 450,
+        y: 350,
+        radius: 7,
+        color: `hsl(60, 100%, 50%)`,
+      },
+    ],
     boundaries: [
       { x: 0, y: 0, width: 700, height: WALL_DEPTH },
       { x: 0, y: 600, width: 705, height: WALL_DEPTH },
@@ -893,6 +957,246 @@ const levels = {
       { x: 100, y: 300, width: 405, height: WALL_DEPTH },
       { x: 500, y: 300, width: WALL_DEPTH, height: 105 },
       { x: 250, y: 400, width: 255, height: WALL_DEPTH },
+    ],
+  },
+  7: {
+    player: {
+      x: 250,
+      y: 30,
+      radius: 10,
+      color: "white",
+    },
+    enemies: [
+      {
+        x: 500,
+        y: 100,
+        radius: 10,
+        color: "red",
+        velocity: {
+          x: 3,
+          y: 3,
+        },
+        coordinates: [
+          { x: 500, y: 100 },
+          { x: 10, y: 100 },
+        ],
+      },
+      {
+        x: 10,
+        y: 200,
+        radius: 10,
+        color: "red",
+        velocity: {
+          x: 3,
+          y: 3,
+        },
+        coordinates: [
+          { x: 10, y: 200 },
+          { x: 500, y: 200 },
+        ],
+      },
+      {
+        x: 500,
+        y: 300,
+        radius: 10,
+        color: "red",
+        velocity: {
+          x: 3,
+          y: 3,
+        },
+        coordinates: [
+          { x: 500, y: 300 },
+          { x: 10, y: 300 },
+        ],
+      },
+      {
+        x: 10,
+        y: 400,
+        radius: 10,
+        color: "red",
+        velocity: {
+          x: 3,
+          y: 3,
+        },
+        coordinates: [
+          { x: 500, y: 400 },
+          { x: 10, y: 400 },
+        ],
+      },
+    ],
+    items: [
+      {
+        x: 250,
+        y: 450,
+        radius: 7,
+        color: `hsl(60, 100%, 50%)`,
+      },
+    ],
+    boundaries: [
+      { x: 0, y: 0, width: 500, height: 5 },
+      { x: 0, y: 500, width: 500, height: 5 },
+      { x: 0, y: 0, width: 5, height: 500 },
+      { x: 500, y: 0, width: 5, height: 505 },
+    ],
+  },
+  8: {
+    player: {
+      x: 250,
+      y: 30,
+      radius: 10,
+      color: "white",
+    },
+    enemies: [
+      {
+        x: 500,
+        y: 100,
+        radius: 10,
+        color: "red",
+        velocity: {
+          x: 3,
+          y: 3,
+        },
+        coordinates: [
+          { x: 500, y: 100 },
+          { x: 10, y: 100 },
+        ],
+      },
+      {
+        x: 10,
+        y: 200,
+        radius: 10,
+        color: "red",
+        velocity: {
+          x: 3,
+          y: 3,
+        },
+        coordinates: [
+          { x: 10, y: 200 },
+          { x: 500, y: 200 },
+        ],
+      },
+      {
+        x: 500,
+        y: 300,
+        radius: 10,
+        color: "red",
+        velocity: {
+          x: 3,
+          y: 3,
+        },
+        coordinates: [
+          { x: 500, y: 300 },
+          { x: 10, y: 300 },
+        ],
+      },
+      {
+        x: 10,
+        y: 400,
+        radius: 10,
+        color: "red",
+        velocity: {
+          x: 3,
+          y: 3,
+        },
+        coordinates: [
+          { x: 500, y: 400 },
+          { x: 10, y: 400 },
+        ],
+      },
+    ],
+    items: [
+      {
+        x: 250,
+        y: 450,
+        radius: 7,
+        color: `hsl(60, 100%, 50%)`,
+      },
+    ],
+    boundaries: [
+      { x: 0, y: 0, width: 500, height: 5 },
+      { x: 0, y: 500, width: 500, height: 5 },
+      { x: 0, y: 0, width: 5, height: 500 },
+      { x: 500, y: 0, width: 5, height: 505 },
+    ],
+  },
+  9: {
+    player: {
+      x: 250,
+      y: 30,
+      radius: 10,
+      color: "white",
+    },
+    enemies: [
+      {
+        x: 500,
+        y: 100,
+        radius: 10,
+        color: "red",
+        velocity: {
+          x: 3,
+          y: 3,
+        },
+        coordinates: [
+          { x: 500, y: 100 },
+          { x: 10, y: 100 },
+        ],
+      },
+      {
+        x: 10,
+        y: 200,
+        radius: 10,
+        color: "red",
+        velocity: {
+          x: 3,
+          y: 3,
+        },
+        coordinates: [
+          { x: 10, y: 200 },
+          { x: 500, y: 200 },
+        ],
+      },
+      {
+        x: 500,
+        y: 300,
+        radius: 10,
+        color: "red",
+        velocity: {
+          x: 3,
+          y: 3,
+        },
+        coordinates: [
+          { x: 500, y: 300 },
+          { x: 10, y: 300 },
+        ],
+      },
+      {
+        x: 10,
+        y: 400,
+        radius: 10,
+        color: "red",
+        velocity: {
+          x: 3,
+          y: 3,
+        },
+        coordinates: [
+          { x: 500, y: 400 },
+          { x: 10, y: 400 },
+        ],
+      },
+    ],
+    items: [
+      {
+        x: 250,
+        y: 450,
+        radius: 7,
+        color: `hsl(60, 100%, 50%)`,
+      },
+    ],
+    boundaries: [
+      { x: 0, y: 0, width: 500, height: 5 },
+      { x: 0, y: 500, width: 500, height: 5 },
+      { x: 0, y: 0, width: 5, height: 500 },
+      { x: 500, y: 0, width: 5, height: 505 },
     ],
   },
 };

@@ -15,6 +15,8 @@ class Game {
     this.boundaries = [];
     this.addEventListeners();
     this.paused = true;
+    this.optionMusic = ui.optionsMusic;
+    this.gameComplete = false;
   }
 
   start() {
@@ -44,7 +46,7 @@ class Game {
   }
 
   playMusic() {
-    if (audio.paused) {
+    if (audio.paused && this.optionMusic) {
       audio.play();
     }
   }
@@ -72,23 +74,39 @@ class Game {
   }
 
   setLevelComplete() {
-    // if player collides with item level complete
-    console.log("complete");
     this.transitionLevel();
-    this.start();
+    if (!this.gameComplete) {
+      this.start();
+    }
   }
 
   transitionLevel() {
     level++;
     this.level = levels[level];
+    if (this.level === undefined) {
+      this.complete();
+    } else {
+      ui.updateLevelNumber(level);
+    }
   }
 
   showGameOverUI() {
     ui.showGameOver(this.player.score);
   }
 
+  showGameCompleted() {
+    cancelAnimationFrame(this.animationID);
+    ui.showGameCompleted(this.player);
+  }
+
   end() {
-    this.showGameOverUI(), 5000;
+    this.showGameOverUI();
+    cancelAnimationFrame(this.animationID);
+  }
+
+  complete() {
+    this.gameComplete = true;
+    this.showGameCompleted();
     cancelAnimationFrame(this.animationID);
   }
 
@@ -107,9 +125,15 @@ class Game {
 
   detectPlayerEnemyCollision(enemy) {
     if (this.player.getEntityCollision(enemy)) {
-      this.spawnParticles(this.player);
-      this.player.unalive();
-      this.end();
+      if (this.survival) {
+        this.player.unalive();
+        this.end();
+      } else {
+        this.spawnParticles(this.player);
+        this.player.incrementLives();
+        ui.updateLifeCount(this.player.lives);
+        this.resetPlayer();
+      }
     }
   }
 
@@ -165,7 +189,7 @@ class Game {
   }
 
   renderBackground() {
-    ctx.fillStyle = "rgb(0, 0, 0)"; //"rgba(0, 0, 0, 0.1)";
+    ctx.fillStyle = "rgb(153, 153, 255, 0.4)"; //"rgba(0, 0, 0, 0.1)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   }
 
@@ -223,6 +247,10 @@ class Game {
         particle.update();
       }
     });
+  }
+
+  resetPlayer() {
+    this.player.reset();
   }
 
   spawnLevelEnemies() {
@@ -388,6 +416,7 @@ let audio = new Audio(musicFile);
 function startGame() {
   ui.hideMainMenu();
   ui.hideLevelSelectMenu();
+  ui.updateLevelNumber(level);
   const game = new Game();
   game.start();
   game.animate();
@@ -416,6 +445,10 @@ optionsButton.addEventListener("click", () => {
 optionsMenuButton.addEventListener("click", () => {
   ui.hideOptionsMenu();
   ui.showMainMenu();
+});
+
+optionsMusicButton.addEventListener("click", () => {
+  ui.toggleMusic();
 });
 
 creditsButton.addEventListener("click", () => {
