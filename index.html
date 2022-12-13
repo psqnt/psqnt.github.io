@@ -1,19 +1,119 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title> Square </title>
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <div id="header">
-      <h1>Square</h1>
+<!-- CSS only -->
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    body {
+        margin: 0;
+    }
+</style>
+<div class="fixed text-white text-sm ml-2">
+    <span>Score: </span>
+    <span id="score" >0</span>
+</div>
+<div id="menu-modal" class="fixed inset-0 flex items-center justify-center">
+    <div class="bg-white max-w-md w-full p-4 text-center">
+        <h1 id="game-name" class="text-4xl font-bold leading-none">You'll Never Beat This Game</h1>
+        <div>
+            <button id="start-game-button"class="bg-blue-500 text-white w-full my-2 py-2 rounded-full">Start Game</button>
+        </div>
+        <div>
+            <button id="start-survival-button"class="bg-blue-500 text-white w-full my-2 py-2 rounded-full">Play Survival</button>
+        </div>
+        <div>
+            <button id="level-select-button"class="bg-blue-500 text-white w-full my-2 py-2 rounded-full">Level Select</button>
+        </div>
+        <div>
+            <button id="options-button"class="bg-blue-500 text-white w-full my-2 py-2 rounded-full">Options</button>
+        </div>
+        <div>
+            <button id="credits-button"class="bg-blue-500 text-white w-full my-2 py-2 rounded-full">Credits</button>
+        </div>
     </div>
-    <div id="game">
-    </div>
-    <div id="footer">
-      By psqnt
-    </div>
-    <script src="js/main.js"></script>
-  </body>
-</html>
+</div>
+
+<div id="game-over-modal" class="fixed inset-0 flex items-center justify-center hidden">
+    <div class="bg-white max-w-md w-full p-4 text-center">
+        <h1 id="game-over-score" class="text-4xl font-bold leading-none">0</h1>
+        <p class="text-sm text-gray-700 mb-4">Points</p>
+        <div>
+            <button id="game-over-menu-button"class="bg-blue-500 text-white w-full py-2 rounded-full">Back to Menu</button>
+        </div>
+    </div> 
+</div>
+
+<div id="level-select-modal" class="fixed inset-0 flex items-center justify-center hidden">
+    <div class="bg-white max-w-md w-full p-4 text-center">
+        <h1 class="text-4xl font-bold leading-none mb-4">Level Select</h1>
+        <div class="grid grid-cols-3 gap-4">
+            <div class="...">
+                <button id="level-1-button"class="bg-blue-500 text-white w-full py-2 rounded-full">1</button>
+            </div>
+            <div class="...">
+                <button id="level-2-button"class="bg-blue-500 text-white w-full py-2 rounded-full">2</button>
+            </div>
+            <div class="...">
+                <button id="level-3-button"class="bg-blue-500 text-white w-full py-2 rounded-full">3</button>
+            </div>
+            <div class="...">
+                <button id="level-4-button"class="bg-blue-500 text-white w-full py-2 rounded-full">4</button>
+            </div>
+            <div class="...">
+                <button id="level-5-button"class="bg-blue-500 text-white w-full py-2 rounded-full">5</button>
+            </div>
+            <div class="...">
+                <button id="level-6-button"class="bg-blue-500 text-white w-full py-2 rounded-full">6</button>
+            </div>
+            <div class="...">
+                <button id="level-7-button"class="bg-blue-500 text-white w-full py-2 rounded-full">7</button>
+            </div>
+            <div class="...">
+                <button id="level-8-button"class="bg-blue-500 text-white w-full py-2 rounded-full">8</button>
+            </div>
+            <div class="...">
+                <button id="level-9-button"class="bg-blue-500 text-white w-full py-2 rounded-full">9</button>
+            </div>
+        </div>
+        <div>
+            <button id="level-select-menu-button"class="bg-blue-500 text-white w-full mt-4 py-2 rounded-full">Back to Menu</button>
+        </div>
+    </div> 
+</div>
+
+<div id="options-modal" class="fixed inset-0 flex items-center justify-center hidden">
+    <div class="bg-white max-w-md w-full p-4 text-center">
+        <h1 class="text-4xl font-bold leading-none">Options</h1>
+        <p class="text-sm text-gray-700 mb-4">TO DO</p>
+        <div>
+            <button id="options-menu-button"class="bg-blue-500 text-white w-full py-2 rounded-full">Back to Menu</button>
+        </div>
+    </div> 
+</div>
+
+<div id="credits-modal" class="fixed inset-0 flex items-center justify-center hidden">
+    <div class="bg-white max-w-md w-full p-4 text-center">
+        <h1 class="text-4xl font-bold leading-none">Credits</h1>
+        <p class="text-sm text-gray-700 mb-4">
+            <strong>Music</strong><br>
+            <p>Brazilian Street Fight by Punch Deck | https://soundcloud.com/punch-deck
+                Music promoted by https://www.chosic.com/free-music/all/
+                Creative Commons Attribution 3.0 Unported License
+                https://creativecommons.org/licenses/by/3.0/deed.en_US
+            </p>
+        </p>
+        <div>
+            <button id="credits-menu-button"class="bg-blue-500 text-white w-full my-2 py-2 rounded-full">Back to Menu</button>
+        </div>
+    </div> 
+</div>
+
+</div>
+<canvas></canvas>
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"
+integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw=="
+crossorigin="anonymous"
+referrerpolicy="no-referrer"></script>
+<script src="./levels.js"></script>
+<script src="./ui.js"></script>
+<script src="./maps.js"></script>
+<script src="./entities.js"></script>
+<script src="./index.js"></script>
