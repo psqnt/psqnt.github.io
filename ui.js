@@ -5,6 +5,7 @@ const levelSelectModel = document.querySelector("#level-select-modal");
 const optionsModal = document.querySelector("#options-modal");
 const howModal = document.querySelector("#how-modal");
 const creditsModal = document.querySelector("#credits-modal");
+const gameCompleteModal = document.querySelector("#game-complete-modal");
 
 // Buttons
 const startButton = document.querySelector("#start-game-button");
@@ -21,6 +22,9 @@ const howMenuButton = document.querySelector("#how-menu-button");
 const creditsButton = document.querySelector("#credits-button");
 const creditsMenuButton = document.querySelector("#credits-menu-button");
 const gameOverMenuButton = document.querySelector("#game-over-menu-button");
+const gameCompleteMenuButton = document.querySelector(
+  "#game-complete-menu-button"
+);
 
 // level select buttons
 const level1Button = document.querySelector("#level-1-button");
@@ -38,11 +42,20 @@ const gameOverScore = document.querySelector("#game-over-score");
 const levelDisplay = document.querySelector("#levelNumber");
 const lifeDisplay = document.querySelector("#lives");
 const scoreElement = document.querySelector("#score");
+const gameCompleteLives = document.querySelector("#game-complete-lives");
+const gameCompleteTime = document.querySelector("#game-complete-time");
+const gameTimeElapsed = document.querySelector("#time");
+
+// music option display
 let musicText = document.querySelector("#music-text");
 
 class UI {
   constructor() {
     this.optionsMusic = true;
+  }
+
+  hideGameCompleteMenu() {
+    gameCompleteModal.style.display = "none";
   }
 
   hideHowMenu() {
@@ -77,11 +90,6 @@ class UI {
     optionsModal.style.display = "flex";
   }
 
-  showGameCompleted(player) {
-    gameOverMenu.style.display = "flex";
-    gameOverScore.innerHTML = `You Win! Lives used: ${player.lives}`;
-  }
-
   showGameOver(score) {
     gameOverMenu.style.display = "flex";
     gameOverScore.innerHTML = score;
@@ -99,12 +107,22 @@ class UI {
     howModal.style.display = "flex";
   }
 
+  showGameCompleteMenu(lives, gameTime) {
+    gameCompleteLives.innerHTML = `Total Lives Used: ${lives}`;
+    gameCompleteTime.innerHTML = `Time Elapsed: ${gameTime}`;
+    gameCompleteModal.style.display = "flex";
+  }
+
   updateGameScoreUI(score) {
     scoreElement.innerHTML = score;
   }
 
   updateLevelNumber(level) {
     levelDisplay.innerHTML = level;
+  }
+
+  updateGameTimeElapsed(milliseconds) {
+    gameTimeElapsed.innerHTML = milliseconds;
   }
 
   updateLifeCount(lives) {

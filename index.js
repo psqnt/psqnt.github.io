@@ -1,5 +1,7 @@
 class Game {
   constructor() {
+    this.addEventListeners();
+    this.startTime = Date.now();
     this.survival = level === "survival";
     this.level = false;
     if (!this.survival) {
@@ -13,13 +15,14 @@ class Game {
     this.particles = [];
     this.items = [];
     this.boundaries = [];
-    this.addEventListeners();
     this.paused = true;
     this.optionMusic = ui.optionsMusic;
     this.gameComplete = false;
+    this.totalPlayerLifeCount = 0;
   }
 
   start() {
+    ui.updateLifeCount(this.totalPlayerLifeCount);
     this.playMusic();
     this.clearLevel();
     this.spawnPlayer();
@@ -35,6 +38,9 @@ class Game {
   }
 
   animate() {
+    this.now = Date.now();
+    this.timeElapsed = this.now - this.startTime;
+    ui.updateGameTimeElapsed(this.timeElapsed);
     if (!this.paused) {
       this.animationID = requestAnimationFrame(this.animate.bind(this));
       this.renderBackground();
@@ -45,10 +51,32 @@ class Game {
     }
   }
 
+  end() {
+    this.showGameOverUI();
+    this.stopMusic();
+    cancelAnimationFrame(this.animationID);
+  }
+
+  complete() {
+    this.gameComplete = true;
+    this.showGameCompleted();
+    this.stopMusic();
+    cancelAnimationFrame(this.animationID);
+  }
+
+  startGameTimer() {}
+
+  stopGameTimer() {}
+
   playMusic() {
     if (audio.paused && this.optionMusic) {
       audio.play();
     }
+  }
+
+  stopMusic() {
+    audio.pause();
+    audio.currentTime = 0;
   }
 
   drawMap() {
@@ -67,9 +95,27 @@ class Game {
 
   generateMap() {
     this.level.boundaries.forEach((boundary) => {
-      this.boundaries.push(
-        new Boundary(boundary.x, boundary.y, boundary.width, boundary.height)
-      );
+      if (Object.hasOwn(boundary, "color")) {
+        this.boundaries.push(
+          new Boundary(
+            boundary.x,
+            boundary.y,
+            boundary.width,
+            boundary.height,
+            boundary.color
+          )
+        );
+      } else {
+        this.boundaries.push(
+          new Boundary(
+            boundary.x,
+            boundary.y,
+            boundary.width,
+            boundary.height,
+            boundary.color
+          )
+        );
+      }
     });
   }
 
@@ -96,18 +142,7 @@ class Game {
 
   showGameCompleted() {
     cancelAnimationFrame(this.animationID);
-    ui.showGameCompleted(this.player);
-  }
-
-  end() {
-    this.showGameOverUI();
-    cancelAnimationFrame(this.animationID);
-  }
-
-  complete() {
-    this.gameComplete = true;
-    this.showGameCompleted();
-    cancelAnimationFrame(this.animationID);
+    ui.showGameCompleteMenu(this.totalPlayerLifeCount, this.timeElapsed);
   }
 
   detectCollisions() {
@@ -130,8 +165,8 @@ class Game {
         this.end();
       } else {
         this.spawnParticles(this.player);
-        this.player.incrementLives();
-        ui.updateLifeCount(this.player.lives);
+        this.totalPlayerLifeCount++;
+        ui.updateLifeCount(this.totalPlayerLifeCount);
         this.resetPlayer();
       }
     }
@@ -421,6 +456,11 @@ function startGame() {
   game.start();
   game.animate();
 }
+
+gameCompleteMenuButton.addEventListener("click", () => {
+  ui.hideGameCompleteMenu();
+  ui.showMainMenu();
+});
 
 gameOverMenuButton.addEventListener("click", () => {
   ui.hideGameOver();

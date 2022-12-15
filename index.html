@@ -12,6 +12,8 @@
     <span id="lives" >0</span>
     <span>Score: </span>
     <span id="score" >0</span>
+    <span>Time Elapsed: </span>
+    <span id="time" >0</span>
 </div>
 <div id="menu-modal" class="fixed inset-0 flex items-center justify-center">
     <div class="bg-white max-w-md w-full p-4 text-center">
@@ -43,6 +45,17 @@
         <p class="text-sm text-gray-700 mb-4">Points</p>
         <div>
             <button id="game-over-menu-button"class="bg-blue-500 text-white w-full py-2 rounded-full">Back to Menu</button>
+        </div>
+    </div> 
+</div>
+
+<div id="game-complete-modal" class="fixed inset-0 flex items-center justify-center hidden">
+    <div class="bg-white max-w-md w-full p-4 text-center">
+        <h1 class="text-4xl font-bold leading-none">You Win</h1>
+        <p id="game-complete-lives" class="text-sm text-gray-700 mb-4"></p>
+        <p id="game-complete-time" class="text-sm text-gray-700 mb-4"></p>
+        <div>
+            <button id="game-complete-menu-button"class="bg-blue-500 text-white w-full py-2 rounded-full">Back to Menu</button>
         </div>
     </div> 
 </div>

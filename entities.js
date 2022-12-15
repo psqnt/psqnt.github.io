@@ -458,7 +458,7 @@ class PathedMovingEnemy extends RoundMovingEntity {
   constructor(x, y, radius, color, velocity, coordinates) {
     super(x, y, radius, color, velocity);
     this.coordinates = coordinates;
-    this.coordinatesIndex = 1;
+    this.coordinatesIndex = 0;
     if (this.coordinates.length > 0) {
       this.targetCoordinates = this.coordinates[0];
     }
@@ -545,14 +545,15 @@ class Particle extends RoundMovingEntity {
 }
 
 class Boundary extends Entity {
-  constructor(x, y, width, height) {
+  constructor(x, y, width, height, color = "blue") {
     super(x, y);
     this.width = width;
     this.height = height;
+    this.color = color;
   }
 
   draw() {
-    ctx.fillStyle = "blue";
+    ctx.fillStyle = this.color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 }
