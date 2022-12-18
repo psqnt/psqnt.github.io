@@ -1,6 +1,5 @@
 class Game {
   constructor() {
-    this.addEventListeners();
     this.startTime = Date.now();
     this.survival = level === "survival";
     this.level = false;
@@ -19,6 +18,7 @@ class Game {
     this.optionMusic = ui.optionsMusic;
     this.gameComplete = false;
     this.totalPlayerLifeCount = 0;
+    this.addEventListeners();
   }
 
   start() {
