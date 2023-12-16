@@ -1,154 +1,26 @@
-<!-- CSS only -->
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-    body {
-        margin: 0;
-    }
-</style>
-<div class="fixed text-white text-sm ml-2">
-    <span>Level: </span>
-    <span id="levelNumber" >1</span>
-    <span>Lives: </span>
-    <span id="lives" >0</span>
-    <span>Score: </span>
-    <span id="score" >0</span>
-    <span>Time Elapsed: </span>
-    <span id="time" >0</span>
-</div>
-<div id="menu-modal" class="fixed inset-0 flex items-center justify-center">
-    <div class="bg-white max-w-md w-full p-4 text-center">
-        <h1 id="game-name" class="text-4xl font-bold leading-none">You'll Never Beat This Game</h1>
-        <div>
-            <button id="start-game-button"class="bg-blue-500 text-white w-full my-2 py-2 rounded-full">Start Game</button>
-        </div>
-        <div>
-            <button id="start-survival-button"class="bg-blue-500 text-white w-full my-2 py-2 rounded-full">Play Survival</button>
-        </div>
-        <div>
-            <button id="level-select-button"class="bg-blue-500 text-white w-full my-2 py-2 rounded-full">Level Select</button>
-        </div>
-        <div>
-            <button id="how-button"class="bg-blue-500 text-white w-full my-2 py-2 rounded-full">How To Play</button>
-        </div>
-        <div>
-            <button id="options-button"class="bg-blue-500 text-white w-full my-2 py-2 rounded-full">Options</button>
-        </div>
-        <div>
-            <button id="credits-button"class="bg-blue-500 text-white w-full my-2 py-2 rounded-full">Credits</button>
-        </div>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="en" data-critters-container>
 
-<div id="game-over-modal" class="fixed inset-0 flex items-center justify-center hidden">
-    <div class="bg-white max-w-md w-full p-4 text-center">
-        <h1 id="game-over-score" class="text-4xl font-bold leading-none">0</h1>
-        <p class="text-sm text-gray-700 mb-4">Points</p>
-        <div>
-            <button id="game-over-menu-button"class="bg-blue-500 text-white w-full py-2 rounded-full">Back to Menu</button>
-        </div>
-    </div> 
-</div>
+<head>
+  <meta charset="utf-8">
+  <title>Ionic App</title>
 
-<div id="game-complete-modal" class="fixed inset-0 flex items-center justify-center hidden">
-    <div class="bg-white max-w-md w-full p-4 text-center">
-        <h1 class="text-4xl font-bold leading-none">You Win</h1>
-        <p id="game-complete-lives" class="text-sm text-gray-700 mb-4"></p>
-        <p id="game-complete-time" class="text-sm text-gray-700 mb-4"></p>
-        <div>
-            <button id="game-complete-menu-button"class="bg-blue-500 text-white w-full py-2 rounded-full">Back to Menu</button>
-        </div>
-    </div> 
-</div>
+  <base href="/">
 
-<div id="level-select-modal" class="fixed inset-0 flex items-center justify-center hidden">
-    <div class="bg-white max-w-md w-full p-4 text-center">
-        <h1 class="text-4xl font-bold leading-none mb-4">Level Select</h1>
-        <div class="grid grid-cols-3 gap-4">
-            <div class="...">
-                <button id="level-1-button"class="bg-blue-500 text-white w-full py-2 rounded-full">1</button>
-            </div>
-            <div class="...">
-                <button id="level-2-button"class="bg-blue-500 text-white w-full py-2 rounded-full">2</button>
-            </div>
-            <div class="...">
-                <button id="level-3-button"class="bg-blue-500 text-white w-full py-2 rounded-full">3</button>
-            </div>
-            <div class="...">
-                <button id="level-4-button"class="bg-blue-500 text-white w-full py-2 rounded-full">4</button>
-            </div>
-            <div class="...">
-                <button id="level-5-button"class="bg-blue-500 text-white w-full py-2 rounded-full">5</button>
-            </div>
-            <div class="...">
-                <button id="level-6-button"class="bg-blue-500 text-white w-full py-2 rounded-full">6</button>
-            </div>
-            <div class="...">
-                <button id="level-7-button"class="bg-blue-500 text-white w-full py-2 rounded-full">7</button>
-            </div>
-            <div class="...">
-                <button id="level-8-button"class="bg-blue-500 text-white w-full py-2 rounded-full">8</button>
-            </div>
-            <div class="...">
-                <button id="level-9-button"class="bg-blue-500 text-white w-full py-2 rounded-full">9</button>
-            </div>
-        </div>
-        <div>
-            <button id="level-select-menu-button"class="bg-blue-500 text-white w-full mt-4 py-2 rounded-full">Back to Menu</button>
-        </div>
-    </div> 
-</div>
+  <meta name="color-scheme" content="light dark">
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
 
-<div id="options-modal" class="fixed inset-0 flex items-center justify-center hidden">
-    <div class="bg-white max-w-md w-full p-4 text-center">
-        <h1 class="text-4xl font-bold leading-none">Options</h1>
-        <div>
-            <span id="music-text"> Music On</span>
-            <button id="options-music-button"class="bg-blue-500 text-white w-full my-2 py-2 rounded-full">Toggle Music</button>
-        </div>
-        <div>
-            <button id="options-menu-button"class="bg-blue-500 text-white w-full my-2 py-2 rounded-full">Back to Menu</button>
-        </div>
-    </div> 
-</div>
+  <link rel="icon" type="image/png" href="assets/icon/favicon.png">
 
-<div id="how-modal" class="fixed inset-0 flex items-center justify-center hidden">
-    <div class="bg-white max-w-md w-full p-4 text-center">
-        <h1 class="text-4xl font-bold leading-none">How To Play</h1>
-        <p class="text-sm text-gray-700 mb-4">WASD - to move</p>
-        <p class="text-sm text-gray-700 mb-4">Collect the yellow circle to move to the next level</p>
-        <p class="text-sm text-gray-700 mb-4">In Survival Mode - click mouse to shoot projectiles - Collect stationary circles for more points</p>
-        <div>
-            <button id="how-menu-button"class="bg-blue-500 text-white w-full py-2 rounded-full">Back to Menu</button>
-        </div>
-    </div> 
-</div>
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+<style>:root{--ion-color-primary:#3880ff;--ion-color-primary-rgb:56, 128, 255;--ion-color-primary-contrast:#ffffff;--ion-color-primary-contrast-rgb:255, 255, 255;--ion-color-primary-shade:#3171e0;--ion-color-primary-tint:#4c8dff;--ion-color-secondary:#3dc2ff;--ion-color-secondary-rgb:61, 194, 255;--ion-color-secondary-contrast:#ffffff;--ion-color-secondary-contrast-rgb:255, 255, 255;--ion-color-secondary-shade:#36abe0;--ion-color-secondary-tint:#50c8ff;--ion-color-tertiary:#5260ff;--ion-color-tertiary-rgb:82, 96, 255;--ion-color-tertiary-contrast:#ffffff;--ion-color-tertiary-contrast-rgb:255, 255, 255;--ion-color-tertiary-shade:#4854e0;--ion-color-tertiary-tint:#6370ff;--ion-color-success:#2dd36f;--ion-color-success-rgb:45, 211, 111;--ion-color-success-contrast:#ffffff;--ion-color-success-contrast-rgb:255, 255, 255;--ion-color-success-shade:#28ba62;--ion-color-success-tint:#42d77d;--ion-color-warning:#ffc409;--ion-color-warning-rgb:255, 196, 9;--ion-color-warning-contrast:#000000;--ion-color-warning-contrast-rgb:0, 0, 0;--ion-color-warning-shade:#e0ac08;--ion-color-warning-tint:#ffca22;--ion-color-danger:#eb445a;--ion-color-danger-rgb:235, 68, 90;--ion-color-danger-contrast:#ffffff;--ion-color-danger-contrast-rgb:255, 255, 255;--ion-color-danger-shade:#cf3c4f;--ion-color-danger-tint:#ed576b;--ion-color-dark:#222428;--ion-color-dark-rgb:34, 36, 40;--ion-color-dark-contrast:#ffffff;--ion-color-dark-contrast-rgb:255, 255, 255;--ion-color-dark-shade:#1e2023;--ion-color-dark-tint:#383a3e;--ion-color-medium:#92949c;--ion-color-medium-rgb:146, 148, 156;--ion-color-medium-contrast:#ffffff;--ion-color-medium-contrast-rgb:255, 255, 255;--ion-color-medium-shade:#808289;--ion-color-medium-tint:#9d9fa6;--ion-color-light:#f4f5f8;--ion-color-light-rgb:244, 245, 248;--ion-color-light-contrast:#000000;--ion-color-light-contrast-rgb:0, 0, 0;--ion-color-light-shade:#d7d8da;--ion-color-light-tint:#f5f6f9}@media (prefers-color-scheme: dark){body{--ion-color-primary:#428cff;--ion-color-primary-rgb:66,140,255;--ion-color-primary-contrast:#ffffff;--ion-color-primary-contrast-rgb:255,255,255;--ion-color-primary-shade:#3a7be0;--ion-color-primary-tint:#5598ff;--ion-color-secondary:#50c8ff;--ion-color-secondary-rgb:80,200,255;--ion-color-secondary-contrast:#ffffff;--ion-color-secondary-contrast-rgb:255,255,255;--ion-color-secondary-shade:#46b0e0;--ion-color-secondary-tint:#62ceff;--ion-color-tertiary:#6a64ff;--ion-color-tertiary-rgb:106,100,255;--ion-color-tertiary-contrast:#ffffff;--ion-color-tertiary-contrast-rgb:255,255,255;--ion-color-tertiary-shade:#5d58e0;--ion-color-tertiary-tint:#7974ff;--ion-color-success:#2fdf75;--ion-color-success-rgb:47,223,117;--ion-color-success-contrast:#000000;--ion-color-success-contrast-rgb:0,0,0;--ion-color-success-shade:#29c467;--ion-color-success-tint:#44e283;--ion-color-warning:#ffd534;--ion-color-warning-rgb:255,213,52;--ion-color-warning-contrast:#000000;--ion-color-warning-contrast-rgb:0,0,0;--ion-color-warning-shade:#e0bb2e;--ion-color-warning-tint:#ffd948;--ion-color-danger:#ff4961;--ion-color-danger-rgb:255,73,97;--ion-color-danger-contrast:#ffffff;--ion-color-danger-contrast-rgb:255,255,255;--ion-color-danger-shade:#e04055;--ion-color-danger-tint:#ff5b71;--ion-color-dark:#f4f5f8;--ion-color-dark-rgb:244,245,248;--ion-color-dark-contrast:#000000;--ion-color-dark-contrast-rgb:0,0,0;--ion-color-dark-shade:#d7d8da;--ion-color-dark-tint:#f5f6f9;--ion-color-medium:#989aa2;--ion-color-medium-rgb:152,154,162;--ion-color-medium-contrast:#000000;--ion-color-medium-contrast-rgb:0,0,0;--ion-color-medium-shade:#86888f;--ion-color-medium-tint:#a2a4ab;--ion-color-light:#222428;--ion-color-light-rgb:34,36,40;--ion-color-light-contrast:#ffffff;--ion-color-light-contrast-rgb:255,255,255;--ion-color-light-shade:#1e2023;--ion-color-light-tint:#383a3e}}html{--ion-dynamic-font:var(--ion-default-dynamic-font)}html{--ion-default-dynamic-font:-apple-system-body;--ion-font-family:var(--ion-default-font)}body{background:var(--ion-background-color)}@supports (padding-top: 20px){html{--ion-safe-area-top:var(--ion-statusbar-padding)}}@supports (padding-top: env(safe-area-inset-top)){html{--ion-safe-area-top:env(safe-area-inset-top);--ion-safe-area-bottom:env(safe-area-inset-bottom);--ion-safe-area-left:env(safe-area-inset-left);--ion-safe-area-right:env(safe-area-inset-right)}}*{box-sizing:border-box;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}html{width:100%;height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%}html:not(.hydrated) body{display:none}body{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;margin:0;padding:0;position:fixed;width:100%;max-width:100%;height:100%;max-height:100%;transform:translateZ(0);text-rendering:optimizeLegibility;overflow:hidden;touch-action:manipulation;-webkit-user-drag:none;-ms-content-zooming:none;word-wrap:break-word;overscroll-behavior-y:none;-webkit-text-size-adjust:none;text-size-adjust:none}html{font-family:var(--ion-font-family)}@supports (-webkit-touch-callout: none){html{font:var(--ion-dynamic-font, 16px var(--ion-font-family))}}</style><link rel="stylesheet" href="styles.0d4a70ba58bd69d2.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.0d4a70ba58bd69d2.css"></noscript></head>
 
-<div id="credits-modal" class="fixed inset-0 flex items-center justify-center hidden">
-    <div class="bg-white max-w-md w-full p-4 text-center">
-        <h1 class="text-4xl font-bold leading-none">Credits</h1>
-        <p class="text-sm text-gray-700 mb-4">
-            <strong>Music</strong><br>
-            <p>Brazilian Street Fight by Punch Deck | https://soundcloud.com/punch-deck
-                Music promoted by https://www.chosic.com/free-music/all/
-                Creative Commons Attribution 3.0 Unported License
-                https://creativecommons.org/licenses/by/3.0/deed.en_US
-            </p>
-        </p>
-        <div>
-            <button id="credits-menu-button"class="bg-blue-500 text-white w-full my-2 py-2 rounded-full">Back to Menu</button>
-        </div>
-    </div> 
-</div>
+<body>
+  <app-root></app-root>
+<script src="runtime.b38dac76ac8aa0c1.js" type="module"></script><script src="polyfills.53dd1ba240d556a9.js" type="module"></script><script src="main.6177a08a6b22ac7c.js" type="module"></script></body>
 
-</div>
-<canvas></canvas>
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"
-integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw=="
-crossorigin="anonymous"
-referrerpolicy="no-referrer"></script>
-<script src="./levels.js"></script>
-<script src="./ui.js"></script>
-<script src="./maps.js"></script>
-<script src="./entities.js"></script>
-<script src="./index.js"></script>
+</html>
