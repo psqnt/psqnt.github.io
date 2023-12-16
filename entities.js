@@ -237,13 +237,6 @@ class Player extends RoundEntity {
     }
   }
 
-  leftKeyDown() {
-    if ("a" in this.game.keysDown) {
-      return true;
-    }
-    return false;
-  }
-
   diagonallyRightUp() {
     if (this.rightKeyDown() && this.upKeyDown()) {
       return true;
@@ -268,6 +261,14 @@ class Player extends RoundEntity {
     }
     return false;
   }
+
+  leftKeyDown() {
+    if ("a" in this.game.keysDown) {
+      return true;
+    }
+    return false;
+  }
+
   leftKeyUp() {
     if ("a" in this.game.keysUp) {
       return true;
