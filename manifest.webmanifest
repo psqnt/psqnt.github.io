@@ -1,8 +1,8 @@
 {
-  "name": "house.app",
-  "short_name": "house.app",
-  "theme_color": "#333333",
-  "background_color": "#333333",
+  "name": "app",
+  "short_name": "app",
+  "theme_color": "#1976d2",
+  "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
